@@ -80,7 +80,7 @@ const Navbar = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center group">
             <img
-              src="/src/assets/logo.png"
+              src="logo.png"
               alt="Logo"
               className="h-12 w-12 mr-2 rounded-full shadow-lg border-2 border-blue-200 group-hover:scale-110 transition-transform duration-200"
             />
