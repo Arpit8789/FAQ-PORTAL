@@ -1,7 +1,7 @@
 // services/faqService.js
 import authService from "./authService";
 
-const API_BASE = "/api/faqs";
+const API_BASE = `${import.meta.env.VITE_API_URL || "/api"}/faqs`;
 
 const getAuthHeaders = () => {
   const token = authService.getToken();
