@@ -10,7 +10,7 @@ export default function HomePage() {
   }, []);
 
   return (
-    <div className="h-[680px] w-full bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 overflow-hidden relative">
+    <div className="min-h-screen w-full bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 overflow-auto relative">
       {/* Animated background blobs */}
       <div className="absolute inset-0 opacity-40 pointer-events-none">
         <div className="absolute top-10 left-1/4 w-72 h-72 bg-blue-500/30 rounded-full mix-blend-multiply filter blur-xl animate-blob"></div>
@@ -43,7 +43,7 @@ export default function HomePage() {
             >
               <div className="relative">
                 <img
-                  src="/src/assets/logo.png"
+                  src="logo.png"
                   alt="Logo"
                   className="w-20 h-20 rounded-2xl shadow-2xl border-4 border-blue-200"
                 />
