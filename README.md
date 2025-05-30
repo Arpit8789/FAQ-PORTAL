@@ -147,5 +147,7 @@ Never commit your `.env` file!
 
 Pull requests are welcome! Please open an issue first for major changes.
 
-
+##  Deployment
+backend : https://faq-portal.onrender.com
+frontend : https://faq-portal.vercel.app/
 
