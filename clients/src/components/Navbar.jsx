@@ -224,7 +224,7 @@ const Navbar = () => {
             </button>
             <div className="flex flex-col items-center">
               <img
-                src="/src/assets/logo.png"
+                src="logo.png"
                 alt="Logo"
                 className="h-16 w-16 mb-4 rounded-full shadow-lg border-2 border-blue-200"
               />
