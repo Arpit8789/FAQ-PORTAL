@@ -1,8 +1,11 @@
 const TOKEN_KEY = "jwt_token";
 const USER_ROLE_KEY = "user_role";
 
-// Determine base API URL
-const BASE_API_URL = import.meta.env.VITE_API_URL || "/api";  // fallback for dev proxy
+// Determine base API URL depending on environment
+const BASE_API_URL =
+  import.meta.env.MODE === "development"
+    ? "/api" // will be proxied to localhost backend
+    : "https://faq-portal.onrender.com/api"; // <-- Replace with your actual Render backend URL
 
 const authService = {
   login: async (email, password) => {
@@ -16,7 +19,8 @@ const authService = {
     }
     const data = await response.json();
     localStorage.setItem(TOKEN_KEY, data.token);
-    localStorage.setItem(USER_ROLE_KEY, data.user?.role); // fix if role is nested under user
+    // If role is nested under user, adjust accordingly
+    localStorage.setItem(USER_ROLE_KEY, data.user?.role || data.role);
     return data;
   },
 
