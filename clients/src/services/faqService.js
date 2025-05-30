@@ -1,7 +1,13 @@
 // services/faqService.js
 import authService from "./authService";
 
-const API_BASE = `${import.meta.env.VITE_API_URL || "/api"}/faqs`;
+// Determine base API URL depending on environment
+const BASE_API_URL =
+  import.meta.env.MODE === "development"
+    ? "/api"
+    : "https://faq-portal.onrender.com/api"; // <-- Replace with your actual Render backend URL
+
+const API_BASE = `${BASE_API_URL}/faqs`;
 
 const getAuthHeaders = () => {
   const token = authService.getToken();
