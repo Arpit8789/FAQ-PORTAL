@@ -1,10 +1,12 @@
-// services/authService.js
 const TOKEN_KEY = "jwt_token";
 const USER_ROLE_KEY = "user_role";
 
+// Determine base API URL
+const BASE_API_URL = import.meta.env.VITE_API_URL || "/api";  // fallback for dev proxy
+
 const authService = {
   login: async (email, password) => {
-    const response = await fetch("/api/auth/login", {
+    const response = await fetch(`${BASE_API_URL}/auth/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password }),
@@ -14,12 +16,12 @@ const authService = {
     }
     const data = await response.json();
     localStorage.setItem(TOKEN_KEY, data.token);
-    localStorage.setItem(USER_ROLE_KEY, data.role);
+    localStorage.setItem(USER_ROLE_KEY, data.user?.role); // fix if role is nested under user
     return data;
   },
 
   register: async (userData) => {
-    const response = await fetch("/api/auth/register", {
+    const response = await fetch(`${BASE_API_URL}/auth/register`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(userData),
