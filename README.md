@@ -79,8 +79,8 @@ npm install
 npm start
 ```
 
-- Frontend: [http://localhost:3000](http://localhost:3000)
-- Backend: [http://localhost:5000](http://localhost:5000)
+- Frontend: https://faq-portal.vercel.app/
+- Backend: https://faq-portal.onrender.com
 
 ---
 
