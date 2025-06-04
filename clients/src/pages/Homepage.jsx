@@ -170,7 +170,7 @@ function FeatureCard({ icon, title, description, gradient, delay, isLoaded }) {
   return (
     <div
       className={`
-        group relative bg-white/10 backdrop-blur-lg border border-white/10 rounded-2xl p-6
+        group relative bg-white/10 backdrop-blur-lg border border-white/10 rounded-2xl p-4
         transition-all duration-200 cursor-pointer
         ${isLoaded ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'}
         hover:-translate-y-3 hover:scale-105
