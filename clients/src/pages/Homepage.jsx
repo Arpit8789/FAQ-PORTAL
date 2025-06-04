@@ -32,7 +32,7 @@ export default function HomePage() {
       ></div>
 
       {/* Main Content */}
-      <div className="relative z-10 h-full flex items-center justify-center">
+      <div className="relative z-10 h-full flex items-center justify-center mt-12">
         <div className="w-full max-w-7xl mx-auto grid lg:grid-cols-12 gap-8 items-center px-4">
           {/* Left: Hero */}
           <div className="lg:col-span-7 flex flex-col justify-center">
