@@ -3,6 +3,8 @@ import { FaUserCircle, FaEnvelope, FaIdBadge, FaCalendarAlt } from "react-icons/
 import axios from "axios";
 import Loader from "../components/Loader";
 
+const API_BASE = import.meta.env.VITE_API_BASE;
+
 const UserProfilePage = () => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -11,7 +13,7 @@ const UserProfilePage = () => {
     const fetchProfile = async () => {
       try {
         const token = localStorage.getItem("token");
-        const res = await axios.get("/api/auth/me", {
+        const res = await axios.get("${API_BASE}/api/auth/me", {
           headers: { Authorization: `Bearer ${token}` }
         });
         setUser(res.data);
