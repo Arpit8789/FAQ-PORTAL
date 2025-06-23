@@ -3,8 +3,7 @@ import axios from "axios";
 import { FaSignInAlt, FaEye, FaEyeSlash } from "react-icons/fa";
 import { useNavigate, Link } from "react-router-dom";
 
-import.meta.env && console.log("🧪 VITE_API_BASE:", import.meta.env.VITE_API_BASE);
-
+const BASE_API_URL = import.meta.env.VITE_API_BASE;
 
 const LoginPage = () => {
   const [username, setUsername] = useState("");
@@ -23,7 +22,8 @@ const LoginPage = () => {
     }
     setLoading(true);
     try {
-      const response = await axios.post("/api/auth/login", {
+      console.log("🟢 Sending login to:", `${BASE_API_URL}/auth/login`);
+      const response = await axios.post(`${BASE_API_URL}/auth/login`, {
         username,
         password,
       });
