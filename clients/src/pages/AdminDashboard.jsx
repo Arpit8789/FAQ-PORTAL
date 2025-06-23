@@ -7,6 +7,7 @@ import FaqTable from "../components/FaqTable";
 import Loader from "../components/Loader";
 import { FaPlus } from "react-icons/fa";
 import axios from "axios";
+const API_BASE = import.meta.env.VITE_API_BASE;
 
 const FILTER_OPTIONS = [
   "Sales & Support",
@@ -29,7 +30,7 @@ const AdminDashboard = () => {
     const fetchFaqs = async () => {
       try {
         const token = localStorage.getItem("token");
-        const response = await axios.get("/api/faqs", {
+        const response = await axios.get("${API_BASE}/api/faqs", {
           headers: { Authorization: `Bearer ${token}` }
         });
         setFaqs(response.data);
@@ -79,7 +80,7 @@ const AdminDashboard = () => {
     if (window.confirm("Are you sure you want to delete this FAQ?")) {
       try {
         const token = localStorage.getItem("token");
-        await axios.delete(`/api/faqs/${id}`, {
+        await axios.delete(`${API_BASE}/api/faqs/${id}`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         setFaqs((prev) => prev.filter((faq) => faq._id !== id));
