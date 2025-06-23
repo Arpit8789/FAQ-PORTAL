@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Loader from "../components/Loader";
 import { FaBookmark } from "react-icons/fa";
+const API_BASE = import.meta.env.VITE_API_BASE;
 
 const BookmarkedFaqs = () => {
   const [bookmarks, setBookmarks] = useState([]);
@@ -11,7 +12,7 @@ const BookmarkedFaqs = () => {
     const fetchBookmarks = async () => {
       try {
         const token = localStorage.getItem("token");
-        const res = await axios.get("/api/auth/bookmarks", {
+        const res = await axios.get("${API_BASE}/api/auth/bookmarks", {
           headers: { Authorization: `Bearer ${token}` }
         });
         setBookmarks(res.data); // Expecting an array of FAQ objects
