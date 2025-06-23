@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import faqService from "../services/faqService";
 import { FaChevronDown, FaChevronUp, FaSearch } from "react-icons/fa";
+const API_BASE = import.meta.env.VITE_API_BASE;
 
 const ViewFaqs = () => {
   const [faqs, setFaqs] = useState([]);
