@@ -3,6 +3,9 @@ import axios from "axios";
 import { FaSignInAlt, FaEye, FaEyeSlash } from "react-icons/fa";
 import { useNavigate, Link } from "react-router-dom";
 
+import.meta.env && console.log("🧪 VITE_API_BASE:", import.meta.env.VITE_API_BASE);
+
+
 const LoginPage = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
