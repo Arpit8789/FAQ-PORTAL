@@ -74,20 +74,20 @@ const UserDashboard = () => {
       try {
         const token = localStorage.getItem("token");
         if (token) {
-          const res = await axios.get("${API_BASE}/api/auth/me", {
+          const res = await axios.get('${API_BASE}/api/auth/me', {
             headers: { Authorization: `Bearer ${token}` }
           });
           setUsername(res.data.username || "User");
         } else {
           setUsername("User");
         }
-        const faqResponse = await axios.get("${API_BASE}/api/faqs?limit=50");
+        const faqResponse = await axios.get('${API_BASE}/api/faqs?limit=50');
         setRecentFaqs(faqResponse.data);
         setFilteredFaqs(faqResponse.data);
 
         // Fetch bookmarked FAQ IDs
         if (token) {
-          const bookmarksRes = await axios.get("${API_BASE}/api/auth/bookmarks", {
+          const bookmarksRes = await axios.get('${API_BASE}/api/auth/bookmarks', {
             headers: { Authorization: `Bearer ${token}` }
           });
           setBookmarkedIds(bookmarksRes.data.map(faq => faq._id));
@@ -128,7 +128,7 @@ const UserDashboard = () => {
     try {
       const token = localStorage.getItem("token");
       await axios.post(
-        "${API_BASE}/api/auth/bookmarks",
+        '${API_BASE}/api/auth/bookmarks',
         { faqId },
         { headers: { Authorization: `Bearer ${token}` } }
       );
