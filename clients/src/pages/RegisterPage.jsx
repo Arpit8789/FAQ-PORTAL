@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import axios from "axios";
 import { FaUserPlus } from "react-icons/fa";
 
+// ✅ Use environment variable base URL
+const BASE_API_URL = import.meta.env.VITE_API_BASE;
+console.log("🧪 VITE_API_BASE (register):", BASE_API_URL);
+
 const RegisterPage = () => {
   const [role, setRole] = useState("User");
   const [username, setUsername] = useState("");
@@ -29,9 +33,17 @@ const RegisterPage = () => {
       setError("Passwords do not match.");
       return;
     }
+
     setLoading(true);
     try {
-      await axios.post("/api/auth/register", { username, email, password, role });
+      console.log("📦 Sending registration to:", `${BASE_API_URL}/auth/register`);
+      await axios.post(`${BASE_API_URL}/auth/register`, {
+        username,
+        email,
+        password,
+        role,
+      });
+
       setSuccess("Registration successful! You may now login.");
       setUsername("");
       setEmail("");
@@ -74,7 +86,9 @@ const RegisterPage = () => {
             <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-2xl blur opacity-30 animate-pulse"></div>
           </div>
           <h2 className="text-3xl font-bold text-gray-800 text-center">Create Account</h2>
-          <p className="text-gray-500 text-center text-sm mt-1">Join the FAQ Portal as User or Admin</p>
+          <p className="text-gray-500 text-center text-sm mt-1">
+            Join the FAQ Portal as User or Admin
+          </p>
         </div>
         <form onSubmit={handleSubmit} noValidate className="space-y-4">
           <div>
@@ -137,12 +151,8 @@ const RegisterPage = () => {
               autoComplete="new-password"
             />
           </div>
-          {error && (
-            <p className="text-red-600 text-sm" role="alert">{error}</p>
-          )}
-          {success && (
-            <p className="text-green-600 text-sm" role="alert">{success}</p>
-          )}
+          {error && <p className="text-red-600 text-sm" role="alert">{error}</p>}
+          {success && <p className="text-green-600 text-sm" role="alert">{success}</p>}
           <button
             type="submit"
             disabled={loading}
