@@ -3,6 +3,9 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { FaPlusCircle } from "react-icons/fa";
 
+const API_BASE = import.meta.env.VITE_API_BASE;
+
+
 const FAQ_CATEGORIES = [
   "Sales & Support",
   "Cloud Services",
@@ -44,7 +47,7 @@ const AddFaq = () => {
       };
 
       await axios.post(
-        "/api/faqs",
+        "${API_BASE}/api/faqs",
         payload,
         {
           headers: {
