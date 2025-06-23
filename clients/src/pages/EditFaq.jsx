@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { FaEdit } from "react-icons/fa";
+const API_BASE = import.meta.env.VITE_API_BASE;
 
 const FAQ_CATEGORIES = [
   "Sales & Support",
@@ -34,7 +35,7 @@ const EditFaq = () => {
     const fetchFaq = async () => {
       try {
         const token = localStorage.getItem("token");
-        const response = await axios.get(`/api/faqs/${id}`, {
+        const response = await axios.get(`${API_BASE}/api/faqs/${id}`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         setTitle(response.data.title);
@@ -73,7 +74,7 @@ const EditFaq = () => {
           .filter((t) => t.length > 0),
       };
       await axios.put(
-        `/api/faqs/${id}`,
+        `${API_BASE}/api/faqs/${id}`,
         payload,
         {
           headers: { Authorization: `Bearer ${token}` }
