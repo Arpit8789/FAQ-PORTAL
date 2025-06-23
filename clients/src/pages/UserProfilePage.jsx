@@ -13,7 +13,7 @@ const UserProfilePage = () => {
     const fetchProfile = async () => {
       try {
         const token = localStorage.getItem("token");
-        const res = await axios.get("${API_BASE}/api/auth/me", {
+        const res = await axios.get('${API_BASE}/api/auth/me', {
           headers: { Authorization: `Bearer ${token}` }
         });
         setUser(res.data);
