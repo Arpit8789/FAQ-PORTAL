@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import SearchBar from "../components/SearchBar";
 import Loader from "../components/Loader";
+const API_BASE = import.meta.env.VITE_API_BASE;
 
 const BrowseFaqs = () => {
   const [faqs, setFaqs] = useState([]);
@@ -13,7 +14,7 @@ const BrowseFaqs = () => {
   useEffect(() => {
     const fetchFaqs = async () => {
       try {
-        const response = await axios.get("/api/faqs");
+        const response = await axios.get("${API_BASE}/api/faqs");
         setFaqs(response.data);
         setFilteredFaqs(response.data);
       } catch (error) {
